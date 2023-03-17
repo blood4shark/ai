@@ -104,15 +104,32 @@ conda clean -i
 
 ## 运行
 
-升级pip
+### 升级pip
 
 ```
 D:\projects\github\AUTOMATIC1111\stable-diffusion-webui\venv\Scripts\python.exe -m pip install --upgrade pip
 ```
 
-修改github.com为国内地址(检出项目可能会失败)
+### 针对git仓库检出问题
+
+#### 修改git代理地址
+
+```
+git config --global http.https://github.com.proxy http://127.0.0.1:53493
+git config --global https.https://github.com.proxy https://127.0.0.1:53493
+```
+
+#### 修改github.com为国内地址
+
+检出项目可能会失败
 
 ​	修改`launch.py`中的 `https://github.com` 为 `https://github.moeyy.xyz`
+
+### 依赖包
+
+部分包安装成功之后仍然会影响安装结果为失败时通过重启电脑解决
+
+### 运行
 
 ```
 ./webui-user.bat
@@ -134,7 +151,13 @@ D:\projects\github\AUTOMATIC1111\stable-diffusion-webui\venv\Scripts\python.exe 
 
 
 
+# 接下来的动作
 
+看官方文档: https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features
+
+能够在服务器上跑起来
+
+了解原理
 
 # 参考文档
 
