@@ -159,6 +159,20 @@ git config --global https.https://github.com.proxy https://127.0.0.1:53493
 
 了解原理
 
+
+
+研究如何产生技术价值(工具、社区)
+
+研究如何产生商业价值(交易)
+
+
+
+
+
+
+
+
+
 # 参考文档
 
 https://www.tjsky.net/tutorial/457
