@@ -1,5 +1,7 @@
 # stable-diffusion-webui
 
+https://github.com/AUTOMATIC1111/stable-diffusion-webui
+
 目标: 部署起来看到图片验证效果
 
 条件: 个人笔记本电脑(14c32g 200g-ssd 3070ti)
@@ -8,81 +10,7 @@
 
 
 
-
-
-策略:
-
-​	与官方文档的操作指南、环境保持一致
-
-问题:
-
-​	无法通过官方文档复现部署
-
-​		官方文档只是提供了核心的部署操作指令
-
-
-
-
-
-
-
-购买 香港、gpu、按量付费、带公网 的服务器、选择debian 10系统
-
-
-
-不一样的地方, 作者环境是个人电脑, 所以用户为非root, 这里希望能改成root
-
-​	使用root之后, 安装包可以不用输入密码
-
-
-
-操作指令
-
-```
-sudo apt update -y
-sudo apt install -y wget git python3 python3-venv
-bash <(wget -qO- https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh)
-
-
-wget https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh
-
-bash /root/webui.sh
-
-mkdir -p /home/root && chmod 777 /home/root
-git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
-cd /home/root/stable-diffusion-webui
-pip install -r requirements.txt
-pip install -r requirements_versions.txt
-vi webui.sh
-	can_run_as_root=0  -> can_run_as_root=1
-
-```
-
-
-
-是否需要安装nvidia驱动?
-
-安装nvdia gpu驱动
-
-```
-sudo vim /etc/apt/sources.list
-deb http://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
-deb-src http://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
-
-deb http://security.debian.org/debian-security bullseye-security main contrib non-free
-deb-src http://security.debian.org/debian-security bullseye-security main contrib non-free
-
-deb http://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
-deb-src http://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
-
-sudo apt update -y && sudo apt install -y nvidia-detect
-nvidia-detect
-sudo apt install -y nvidia-driver
-```
-
-
-
-# python项目
+# python
 
 ## 配置加速器
 
@@ -95,7 +23,15 @@ $HOME/.config/pip/pip.conf
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple12
 ```
 
-### windows
+
+
+# 在本地电脑上运行项目(windows)
+
+## 安装python
+
+安装python 3.10.6 ( https://www.python.org/downloads/release/python-3106/ )
+
+配置加速器
 
 ```
 %APPDATA%\pip\pip.ini
@@ -104,17 +40,29 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple12
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
+## 安装cuda
+
+安装nvdia驱动 或者 cuda
+
+### 直接安装cuda(方式一)
+
+查看支持的cuda最高版本
+
+```
+nvidia-smi
+```
+
+安装cuda 12.1
+
+​	https://developer.nvidia.com/cuda-toolkit-archive
+
+​	https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local
+
+### 直接安装nvdia 图形显卡驱动(方式二)
 
 
-# 在本地电脑上运行项目
 
-安装python 3.10.6 ( https://www.python.org/downloads/release/python-3106/ )
-
-​	
-
-
-
-
+## 安装anaconda
 
 安装Anaconda
 
@@ -146,6 +94,18 @@ custom_channels:
   simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
 
 conda clean -i
+```
+
+如何清理
+
+​	删除 `C:\Users\86176\anaconda3\envs\stable-diffusion-webui` 这个目录就可以了
+
+
+
+## 运行
+
+```
+./webui-user.bat
 ```
 
 
