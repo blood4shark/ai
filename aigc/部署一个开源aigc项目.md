@@ -31,7 +31,7 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple12
 
 安装python 3.10.6 ( https://www.python.org/downloads/release/python-3106/ )
 
-配置加速器
+配置加速器(会导致部分包无法下载)
 
 ```
 %APPDATA%\pip\pip.ini
@@ -103,6 +103,16 @@ conda clean -i
 
 
 ## 运行
+
+升级pip
+
+```
+D:\projects\github\AUTOMATIC1111\stable-diffusion-webui\venv\Scripts\python.exe -m pip install --upgrade pip
+```
+
+修改github.com为国内地址(检出项目可能会失败)
+
+​	修改`launch.py`中的 `https://github.com` 为 `https://github.moeyy.xyz`
 
 ```
 ./webui-user.bat
