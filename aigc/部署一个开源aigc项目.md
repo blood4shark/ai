@@ -82,7 +82,75 @@ sudo apt install -y nvidia-driver
 
 
 
+# python项目
 
+## 配置加速器
+
+### linux
+
+```
+$HOME/.config/pip/pip.conf
+
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple12
+```
+
+### windows
+
+```
+%APPDATA%\pip\pip.ini
+
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+
+
+# 在本地电脑上运行项目
+
+安装python 3.10.6 ( https://www.python.org/downloads/release/python-3106/ )
+
+​	
+
+
+
+
+
+安装Anaconda
+
+​	下载安装 https://www.anaconda.com/products/distribution/start-coding-immediately
+
+配置加速器
+
+```
+conda config --set show_channel_urls yes
+
+# 修改文件
+%APPDATA%/.condarc
+
+
+channels:
+  - defaults
+show_channel_urls: true
+default_channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+
+conda clean -i
+```
+
+
+
+# 在服务器上运行项目
 
 通过vagrant创建一个带gpu的debian虚拟机
 
@@ -94,3 +162,12 @@ sudo apt install -y nvidia-driver
 
 准备项目文件、下载依赖(耗时长)
 
+
+
+
+
+# 参考文档
+
+https://www.tjsky.net/tutorial/457
+
+https://zhuanlan.zhihu.com/p/591620617
